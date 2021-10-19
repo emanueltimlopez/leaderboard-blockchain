@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import { Game } from '../components/game'
 import { Account } from '../components/account'
 import { Table } from '../components/table'
-import { getContract } from '../utils/getContract'
+import { getContract } from '../utils/get-contract'
 
 export default function Home() {
   const { account, connect } = useWallet()
@@ -33,6 +33,7 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
+        <h2>Play a game and save your score on the blockchain</h2>
         <Game onFinish={onFinishHandler} />
         {mining && <p>Mining...</p>}
         <Table account={account}/>

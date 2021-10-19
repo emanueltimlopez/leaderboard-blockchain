@@ -1,0 +1,35 @@
+.account__container {
+  width: auto;
+  display: flex;
+  border: 1px solid #c7c7c7;
+  border-radius: 50px;
+  padding: .5rem;
+  font-size: 15px;
+}
+
+.account__address {
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.account__button {
+  background: none;
+  border: none;
+  color: rgb(94, 94, 94);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0 .5rem;
+}
+
+.account__status {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  display: block;
+  background-color: rgb(240, 84, 84);
+}
+
+.account__status--connect {
+  background-color: rgb(157, 223, 148);
+}
+

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
-import { getContract } from "../utils/getContract"
+import * as timeago from 'timeago.js'
+import { getContract } from "../../utils/get-contract"
+import { AddressCut } from "../../utils/address-cut"
+import styles from './Table.module.css'
 
 export function Table({ account }) {
   const [ scores, setScores ] = useState([])
@@ -9,7 +12,7 @@ export function Table({ account }) {
       const scores = await getLeaderboard()
       setScores(scores.map(score => ({
         address: score.addr,
-        time: new Date(score.timestamp * 1000),
+        time: score.timestamp,
         points: score.points
       })))
     }
@@ -24,7 +27,7 @@ export function Table({ account }) {
         ...prevState,
         {
           address: from,
-          time: new Date(timestamp * 1000),
+          time: timestamp,
           points: points
         }
       ])
@@ -36,14 +39,19 @@ export function Table({ account }) {
   const sortedScores = scores ? scores.sort((a, b) => (b.points.toNumber() - a.points.toNumber())) : []
 
   const getRow = (score) => {
-    return `${score.points.toNumber()} - ${score.address} - ${score.time.getFullYear()}/${score.time.getMonth()}/${score.time.getDate()} `
+    return (<div className={styles.table__row}>
+      <span className={styles['table__column--points']}>{score.points.toNumber()}</span>
+      <span className={styles['table__column--address']}>{AddressCut(score.address)}</span>
+      <span className={styles['table__column--time']}>{timeago.format(new Date(score.time.toNumber()* 1000))}</span>
+    </div>)
   }
 
-  return (
-    <ul>
+  return (<>
+    <h1>Leaderboard</h1>
+    <ul className={styles.table__container}>
       {sortedScores.map(score => score && <li key={score.addr+score.points}>
           {getRow(score)}
       </li>)}
     </ul>
-  )
+  </>)
 }

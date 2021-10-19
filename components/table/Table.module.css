@@ -1,0 +1,27 @@
+.table__container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+}
+
+.table__row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb;
+  align-items: baseline;
+}
+
+.table__column--points {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.table__column--address {
+  font-style: italic;
+}
+
+.table__column--time {
+  font-size: 0.8em;
+}
