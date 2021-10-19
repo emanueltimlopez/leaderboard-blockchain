@@ -175,7 +175,10 @@ export function runGame(onFinish) {
   }
 
   setInterval(() => {
-    timeScore -= 999
+    timeScore -= 550
+    if (timeScore < 0) {
+      finish = true;
+    }
   }, 200)
 
   draw()
