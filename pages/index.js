@@ -34,6 +34,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h2>Play a game and save your score on the blockchain</h2>
+        <h4 className={styles.subtitle}>50% chance of earning ETH if you upload the score</h4>
         <Game onFinish={onFinishHandler} />
         {mining && <p>Mining...</p>}
         <Table account={account}/>

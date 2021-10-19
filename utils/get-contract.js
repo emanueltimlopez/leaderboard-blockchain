@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import abi from './Leaderboard.json'
 
-const contractAddress = "0x420AFC9Bc788bA6c147E4fD9f72DDc46995fa0AF"
+const contractAddress = "0x25c0E39A645792643F7a5A389Bf12c5a63243D5B"
 const contractABI = abi.abi
 
 export function getContract() {
