@@ -39,6 +39,13 @@ export default function Home() {
         {mining && <p>Mining...</p>}
         <Table account={account}/>
       </main>
+
+      <footer className={styles.footer}>
+        <p>Made with ❤ from Buenos Aires</p>
+        <p><a href='https://app.buildspace.so'>Buildspace</a> Project</p>
+        <p>Game from <a href='https://github.com/end3r/Gamedev-Canvas-workshop'>Github</a></p>
+        <p>I&apos;m <a href='https://twitter.com/timbislopez'>@timbislopez</a> on Twitter</p>
+      </footer>
     </div>
   )
 }

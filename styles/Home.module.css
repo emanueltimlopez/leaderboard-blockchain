@@ -26,3 +26,13 @@
   margin: 0;
   font-weight: normal;
 }
+
+.footer {
+  margin-top: 2rem;
+  border-top: 1px solid #dbdbdb;
+  width: 100%;
+}
+
+.footer a {
+  color: rgb(59, 147, 247);
+}
