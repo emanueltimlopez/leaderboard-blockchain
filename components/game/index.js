@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { runGame } from "./Game";
+import { runGame } from "./game";
 
 export function Game({ onFinish }) {
   const [play, setPlay] = useState(false)
