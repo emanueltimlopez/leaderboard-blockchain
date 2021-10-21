@@ -3,8 +3,9 @@ import * as timeago from 'timeago.js'
 import { getContract } from "../../utils/get-contract"
 import { AddressCut } from "../../utils/address-cut"
 import styles from './Table.module.css'
+import { ethers } from "ethers"
 
-export function Table({ account }) {
+export function Table({ account, load }) {
   const [ scores, setScores ] = useState([])
 
   useEffect(() => {
@@ -17,8 +18,10 @@ export function Table({ account }) {
       })))
     }
 
-    getData()
-  }, [account])
+    if (load) {
+      getData()
+    }
+  }, [account, load])
 
   useEffect(() => {
     getContract().on('NewScore', (points, from, timestamp) => {
@@ -34,7 +37,13 @@ export function Table({ account }) {
     })
   }, [])
 
-  const getLeaderboard = async () => getContract().getLeaderboard()
+  const getLeaderboard = async () => {
+    try {
+      return getContract().getLeaderboard()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const sortedScores = scores ? scores.sort((a, b) => (b.points.toNumber() - a.points.toNumber())) : []
 

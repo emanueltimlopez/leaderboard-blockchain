@@ -1,0 +1,20 @@
+.alert__network {
+  display: flex;
+  background-color: #fdeba4;
+  padding: .1rem 2rem;
+  border-radius: 4px;
+  color: #595959;
+}
+
+.alert__network svg {
+  width: 27px;
+  margin-right: 10px;
+}
+
+.alert__network button {
+  color: rgb(59, 147, 247);
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}

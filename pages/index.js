@@ -3,15 +3,18 @@ import Image from 'next/image'
 import { ethers } from 'ethers'
 import { useState } from 'react'
 import { useWallet } from '../hooks/useWallet'
-import styles from '../styles/Home.module.css'
 import { Game } from '../components/game'
 import { Account } from '../components/account'
 import { Table } from '../components/table'
 import { getContract } from '../utils/get-contract'
+import styles from '../styles/Home.module.css'
+import { AlertNetwork } from '../components/alert'
+import { useNetwork } from '../hooks/useNetwork'
 
 export default function Home() {
   const { account, connect } = useWallet()
   const [ mining, setMining ] = useState(false)
+  const { correctNetwork } = useNetwork()
 
   const onFinishHandler = async (score) => {
     const saveTxn = await getContract().saveScore(score, { gasLimit: 300000 })
@@ -33,11 +36,12 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
+        {!correctNetwork && <AlertNetwork />}
         <h2>Play a game and save your score on the blockchain</h2>
         <h4 className={styles.subtitle}>50% chance of earning ETH if you upload the score</h4>
         <Game onFinish={onFinishHandler} />
         {mining && <p>Mining...</p>}
-        <Table account={account}/>
+        <Table account={account} load={correctNetwork}/>
       </main>
 
       <footer className={styles.footer}>
